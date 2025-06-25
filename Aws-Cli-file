@@ -113,7 +113,7 @@ sudo growpart /dev/xvda 1
    27  aws ec2 describe-instances --query "Reservations[*].Instances[*].{PublicIP:PublicIpAddress,Name:Tags[?Key=='Name']|[0].Value,Status:State.Name,Type:InstanceType,VpcId:VpcId}" --output table
 
 
-instance_id=$(aws ec2 run-instances --image-id ami-053b0d53c279acc90 --instance-type t2.micro --key-name slave2  --tag-specifications 'ResourceType=instance,Tags=[{Key=Name,Value=demo2}]' --query 'Reservations[*].Instances[*].[InstanceId]' --output text)
+instance_id=$(aws ec2 run-instances --image-id ami-053b0d53c279acc90 --instance-type t2.micro --key-name slave2  --tag-specifications 'ResourceType=instance,Tags=[{Key=Name,Value=demo2}]' --query 'Instances[*].[InstanceId]' --output text)
 
 
 
